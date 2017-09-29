@@ -10,14 +10,14 @@ var songs = ["I came in like a wrecking ball", "Yesterday all my troubles seemed
 var challenges = ["A"];
 
 function sp(){
-    document.getElementById('introPage').style.display = "none";
-    document.getElementById('singlePage').style.display = "block";
+    document.getElementById('homePage').style.display = "none";
+    document.getElementById('categoryPage').style.display = "block";
 }
 
 function phrase(){
     rand = Math.floor(Math.random()*phrases.length);
     word = phrases[rand];
-    document.getElementById('singlePage').style.display = "none";
+    document.getElementById('categoryPage').style.display = "none";
     document.getElementById('categoryName').innerHTML = "Phrases";
     hangman();
 }
@@ -25,7 +25,7 @@ function phrase(){
 function movie(){
     rand = Math.floor(Math.random()*movies.length);
     word = movies[rand];
-    document.getElementById('singlePage').style.display = "none";
+    document.getElementById('categoryPage').style.display = "none";
     document.getElementById('categoryName').innerHTML = "Movies and movie quotes";
     hangman();
 }
@@ -33,7 +33,7 @@ function movie(){
 function song(){
     rand = Math.floor(Math.random()*songs.length);
     word = songs[rand];
-    document.getElementById('singlePage').style.display = "none";
+    document.getElementById('categoryPage').style.display = "none";
     document.getElementById('categoryName').innerHTML = "Song titles and lyrics";
     hangman();
 }
@@ -47,7 +47,7 @@ function challenge(){
         document.getElementById('letter1').style.visibility = "hidden";
         document.getElementById('underline1').style.display = "block";
         document.getElementById('underline1').style.borderBottom = "3px solid black";
-    document.getElementById('singlePage').style.display = "none";
+    document.getElementById('categoryPage').style.display = "none";
     document.getElementById('gamePage').style.display = "block";
     document.getElementById('categoryName').innerHTML = "Guess every letter other than the correct one to win!";
     document.getElementById('categoryName').style.width = "100%";

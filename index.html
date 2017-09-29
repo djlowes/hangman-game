@@ -1,43 +1,52 @@
 
 <!DOCTYPE html>
-<html lang="">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hangman Game</title>
+<html>
+	<head>
+		<title>Hangman by David Lowes</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" href="styles.css" />
-    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter|Gloria+Hallelujah' rel='stylesheet' type='text/css'>
     <script type="text/javascript" src="script.js"></script>
     <script>window.onload = draw;</script>
 </head>
 
 <body>
-    <div id="introPage">
-        <div id="introText">
-            <p>Welcome to online hangman!</p>
-            <p>Select single player or multiplayer to begin!</p>
-            <div id="buttonContainer">
-                <div id="sp" onclick="sp()">Single player</div>
-            </div>
-        </div>
+
+<!-- Header -->
+    <header>
+      <div id="name">
+      <h1><a href="http://www.djlowes.com">David Lowes</a></h1>
+    </div>
+    </header>
+
+<!-- Homepage -->
+    <div id="homePage">
+      <h2>HANGMAN</h2>
+      <h3>Play it quick, play it slow, play it at whatever pace you like. Just play it.</h3>
+        <br/>
+        <br/>
+      <div class="button special" onclick="sp()">Start Now</div>
         <canvas id="homeHangman" width="300px" height="300px"></canvas>
     </div>
-    <div id="singlePage">
-        <p>Pick a category:</p>
-        <div id="categoryHolder">
+
+<!-- Category Page (page2) -->
+
+    <div id="categoryPage">
+        <p>Choose a category:</p>
             <div id="category">
                 <div id="category1">
-                    <div id="phrases" onclick="phrase()">Phrases</div>
-                    <div id="movies" onclick="movie()">Movies</div>
+                    <div id="phrases" onclick="phrase()">Book Titles</div>
+                    <div id="movies" onclick="movie()">Movie Sayings</div>
                 </div>
                 <div id="category2">
-                    <div id="songs" onclick="song()">Songs</div>
-                    <div id="challenge" onclick="challenge()">Challenge</div>
+                    <div id="songs" onclick="song()">Famous Songs</div>
+                    <div id="challenge" onclick="challenge()">Inspirational Quotes</div>
                 </div>
             </div>
-        </div>
     </div>
+
+
+
     <div id="gamePage">
         <p id="categoryName"></p>
         <div id="wordWrap">
