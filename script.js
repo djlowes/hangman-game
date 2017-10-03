@@ -1,32 +1,31 @@
-var rand = 0;
-var word = "";
+
 var numWrong = 0;
 var numRight = 0;
 var phraseLength = 0;
 var numChar = 0;
-var phrases = ["Early bird gets the worm", "Read between the lines", "I can eat a horse", "Twenty-four seven", "Cat got your tounge", "One in one million", "I beg to differ", "Easier said than done", "Add insult to injury", "Don't cry over spilled milk", "Curiosity killed the cat", "Two peas in a pod", "That's the last straw", "Piece of cake", "Speak of the devil", "Go the whole nine yards", "An eye for an eye", "Hit the hay", "Stab someone in the back", "Quit cold turkey", "Cut to the chase", "Best of both worlds", "Kill two birds with one stone", "Break a leg", "Hit the nail on the head", "Kick the bucket"];
-var movies = ["Frankly, my dear, I don't give a damn", "May the Force be with you", "Titanic", "After all this time? Always.", "Life is like a box of chocolates", "To infinity and beyond", "I'll be back", "Wax on, wax off", "I'm going to make him an offer he can't refuse", "Want to know how I got these scars?", "Citizen Kane", "Team Edward", "No, I am your father", "Do or do not. There is no try.", "Do you want to build a snowman?", "Hakuna Matata", "Go ahead, make my day", "Bond. James Bond.", "You're going to need a bigger boat", "You talkin' to me?", "Here's Johnny!", "The hills are alive!", "Toto, I have a feeling we're not in Kansas anymore", "Welcome to Jurassic Park", "Say hello to my little friend!", "Run Forest Run!"];
+var books = ["Don Quixote", "In Search Of Lost Time", "Ulysses", "The Odyssey", "War and Peace", "Moby Dick", "The Divine Comedy", "Hamlet", "The Adventures of Huckleberry Finn", "The Great Gatsby", "The Iliad", "One Hundred Years of Solitude", "Madame Bovary", "Crime and Punishment", "The Brothers Karamazov", "Pride and Prejudice", "Wuthering Heights", "The Sound and the Fury", "Lolita", "Nineteen Eighty Four", "Alice's Adventures in Wonderland", "Great Expectations", "Anna Karenina", "The Catcher", "Middlemarch", "Gulliver's Travels", "The Aeneid", "Heart of Darkness", "One Thousand and One Nights", "The Canterbury Tales", "The Stranger", " The Stories of Anton Chekhov", "The Grapes of Wrath", "The Red and the Black", "The Trial", "Leaves of Grass", "Absalom, Absalom", "Oedipus the King", "Candide", "The Quran", "The Republic", "The Bible", "Gulliver's Travels", "The Wealth of Nations", "Invisible Man", "Falconer", "Lord of the Flies", "The Lion, The Witch and the Wardrobe", "The Lord of the Rings", "Things Fall Apart", "To Kill a Mockingbird", "Tropic of Cancer", "A Clockwork Orange", "Animal Farm", "Blood Meridian", "Beloved", "All the King’s Men", "Gone With the Wind", "One Flew Over the Cuckoo’s Nest"];
+var movieSayings = ["Frankly, my dear, I don’t give a damn", "Here’s looking at you, kid", "You’re gonna need a bigger boat", "May the Force be with you", "Toto, I’ve a feeling we’re not in Kansas anymore", "You talkin’ to me?", "There’s no place like home", "The first rule of Fight Club is you do not talk about Fight Club", "I am your father", "Bond. James Bond", "I see dead people", "I’ll be back", "You can’t handle the truth!", "E.T phone home", "To infinity and beyond!", "Houston, we have a problem", "Show me the money!", "Say hello to my little friend", "I love the smell of napalm in the morning", "The greatest trick the devil ever pulled was convincing the world he didn't exist", "Keep your friends close, but your enemies closer", "Shaken, not stirred", "If you built it, he will come", "Hasta la vista, baby", "Go ahead, make my day", "My precious", "Good morning, Vietnam!", "Elementary, my dear Watson", "Wax on, wax off", "They may take our lives, but they'll never take our freedom!"];
 var songs = ["I came in like a wrecking ball", "Yesterday all my troubles seemed so far away", "Work, work, work, work, work", "Just a small town girl", "I still haven't found what I'm looking for", "Annie are you OK?", "Nah nah nah nah nah nah nah, nah nah nah nah, hey Jude", "Is this the real life? Is this just fantasy?", "We don't need no education", "Have you ever seen the rain?", "She's got eyes of the bluest skys", "So close, no matter how far", "I don't want to miss a thing", "Take my hand, we'll make it, I swear", "That's me in the corner", "A mulatto, an albino, a mosquito, my libido", "You've been thunderstruck", "Another one bites the dust", "Eye of the tiger", "B-B-B-Bennie and the Jets", "Sing us a song you're the piano man", "Hello darkness my old friend", "Somewhere over the rainbow blue birds fly", "Don't worry about a thing", "Imagine there's no heaven", "Can you feel the love tonight?"];
 var challenges = ["A"];
 
-function sp(){
+function startG(){
     document.getElementById('homePage').style.display = "none";
     document.getElementById('categoryPage').style.display = "block";
 }
 
-function phrase(){
-    rand = Math.floor(Math.random()*phrases.length);
-    word = phrases[rand];
+function bookTitles(){
+    rand = Math.floor(Math.random()*books.length);
+    word = books[rand];
     document.getElementById('categoryPage').style.display = "none";
-    document.getElementById('categoryName').innerHTML = "Phrases";
+    document.getElementById('categoryName').innerHTML = "What's the name of this famous book?";
     hangman();
 }
 
-function movie(){
-    rand = Math.floor(Math.random()*movies.length);
-    word = movies[rand];
+function movies(){
+    rand = Math.floor(Math.random()*movieSayings.length);
+    word = movieSayings[rand];
     document.getElementById('categoryPage').style.display = "none";
-    document.getElementById('categoryName').innerHTML = "Movies and movie quotes";
+    document.getElementById('categoryName').innerHTML = "What is this famous movie quote?";
     hangman();
 }
 
@@ -182,7 +181,7 @@ function hangman(){
         y--;
     }
     phraseLength = word.length - spaces;
-    document.getElementById('gamePage').style.display = "block";
+    document.getElementById('playPage').style.display = "block";
     splitWords();
     document.getElementById('challengeBank').style.display = "none";
     draw();
@@ -943,13 +942,13 @@ function reset(){
     again.style.marginTop = "0px";
     again.style.display = "none";
     document.getElementById('home').style.display = "none";
-    if(phrases.indexOf(word) > -1){
-        phrases.splice(rand,1);
-        phrase();
+    if(books.indexOf(word) > -1){
+        books.splice(rand,1);
+        bookTitles();
     }
-    else if(movies.indexOf(word) > -1){
-        movies.splice(rand,1);
-        movie();
+    else if(movieSayings.indexOf(word) > -1){
+        movieSayings.splice(rand,1);
+        movies();
     }
     else if(songs.indexOf(word) > -1){
         songs.splice(rand,1);

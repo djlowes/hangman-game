@@ -1743,11 +1743,9 @@ strong, b {
     	}
 
   h1, h2, h3, h4, h5, h6 {
-    color: #ffffff;
-    font-family: Raleway, Helvetica, sans-serif;
-    letter-spacing: 0.1em;
+
     margin: 0 0 1em 0;
-    text-transform: uppercase;
+
     	}
 
   h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
@@ -1767,14 +1765,25 @@ strong, b {
 
   h2 {
     font-size: 4.2em;
+    color: #ffffff;
+    font-family: Raleway, Helvetica, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
     	}
 
   h3 {
     		font-size: 1.1em;
+        color: #ffffff;
+        font-family: Raleway, Helvetica, sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
     	}
 
   h4 {
-    font-size: 0.7em;
+    font-size: 3.1em;
+    font-weight: 600;
+    color: #DCDCDC;
+
     	}
 
   h5 {
@@ -1949,7 +1958,7 @@ strong, b {
 
 
 
-body, html, #category, #category1, #category2, #phrases, #movies, #songs, #challenge, #homePage, #sp, #mp, #sp1, #mp1, #multiPage, #categoryPage #wordWrap, #wordWrap div, #restriction, #gamePage, #letterBank div, #challengeBank div {
+body, html, #category, #category1, #category2, #bookTitles, #movies, #songs, #challenge, #homePage, #sp, #mp, #sp1, #mp1, #multiPage, #categoryPage #wordWrap, #wordWrap div, #restriction, #playPage, #letterBank div, #challengeBank div {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -2026,7 +2035,7 @@ body, html, #category, #category1, #category2, #phrases, #movies, #songs, #chall
         height: 335px;
         margin: 0 auto;
     }
-    
+
     #category1, #category2{
         float: left;
         width: 700px;
@@ -2035,57 +2044,51 @@ body, html, #category, #category1, #category2, #phrases, #movies, #songs, #chall
     #category1{
         margin-bottom: 30px;
     }
-    #phrases, #movies, #songs, #challenge{
+    #bookTitles, #movies, #songs, #challenge{
+
         float: left;
         width: 48%;
         height: 100%;
-        font-size: 70px;
-        line-height: 150px;
+        font-size: 30px;
+        line-height: 50px;
         text-align: center;
         border: 1px solid black;
         cursor: pointer;
+        border: 1px solid white;
+        border-radius: 15px;
+        padding: 0.5em;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: #FFFFFF
     }
     #challenge, #movies{
         float: right;
     }
-    #phrases{
-        background: #000081;
-        background: -webkit-linear-gradient(left, #000081, white);
-        background: -o-linear-gradient(left, #000081, white);
-        background: -moz-linear-gradient(left, #000081, white);
-        background: linear-gradient(to right, #000081, white);
+    #bookTitles {
+        background: url("images/books.jpg")
     }
     #movies{
-        background: #147b14;
-        background: -webkit-linear-gradient(left, white, #147b14);
-        background: -o-linear-gradient(right, white, #147b14);
-        background: -moz-linear-gradient(right, white, #147b14);
-        background: linear-gradient(to right, white, #147b14);
+      background: url("images/movies.jpeg")
     }
     #songs{
-        background: #bc7a00;
-        background: -webkit-linear-gradient(left, #bc7a00, white);
-        background: -o-linear-gradient(left, #bc7a00, white);
-        background: -moz-linear-gradient(left, #bc7a00, white);
-        background: linear-gradient(to right, #bc7a00, white);
+      background: url("images/song.jpeg")
     }
     #challenge{
-        background: #b10000;
-        background: -webkit-linear-gradient(left, white, #b10000);
-        background: -o-linear-gradient(right, white, #b10000);
-        background: -moz-linear-gradient(right, white, #b10000);
-        background: linear-gradient(to right, white, #b10000);
+      background: url("images/quotes.jpeg")
     }
 
-#gamePage{
+#playPage{
     display: none;
     text-align: center;
 }
     #categoryName{
         width: 100%;
         margin: 20px auto 0px auto;
-        font-size: 75px;
+        font-size: 60px;
+        font-weight: 300;
+        padding-top: 60px;
     }
+
     #wordWrap{
         display: inline-block;
         width: 830px;
@@ -2167,7 +2170,7 @@ body, html, #category, #category1, #category2, #phrases, #movies, #songs, #chall
   		padding-right: 9.5em;
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      font-weight: 700
+      font-weight: 700;
 
   	}
 
@@ -2266,7 +2269,7 @@ body, html, #category, #category1, #category2, #phrases, #movies, #songs, #chall
             height: 30px;
             line-height: 30px;
         }
-    #gamePage{
+    #playPage{
     }
         #categoryName{
             margin: 0 auto;
@@ -2397,7 +2400,7 @@ body, html, #category, #category1, #category2, #phrases, #movies, #songs, #chall
             height: 25px;
             line-height: 25px;
         }
-    #gamePage{
+    #playPage{
         min-width: 365px;
     }
         #categoryName{

@@ -6,6 +6,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
     <script type="text/javascript" src="script.js"></script>
     <script>window.onload = draw;</script>
 </head>
@@ -25,29 +26,27 @@
       <h3>Play it quick, play it slow, play it at whatever pace you like. Just play it.</h3>
         <br/>
         <br/>
-      <div class="button special" onclick="sp()">Start Now</div>
-        <canvas id="homeHangman" width="300px" height="300px"></canvas>
+      <div class="button special" onclick="startG()">Start Now</div>
     </div>
 
 <!-- Category Page (page2) -->
-
     <div id="categoryPage">
-        <p>Choose a category:</p>
+        <h4>Choose a category:</h4>
             <div id="category">
                 <div id="category1">
-                    <div id="phrases" onclick="phrase()">Book Titles</div>
-                    <div id="movies" onclick="movie()">Movie Sayings</div>
+                    <div id="bookTitles" onclick="bookTitles()">Book Titles</div>
+                    <div id="movies" onclick="movies()">Movie Sayings</div>
+
                 </div>
                 <div id="category2">
-                    <div id="songs" onclick="song()">Famous Songs</div>
-                    <div id="challenge" onclick="challenge()">Inspirational Quotes</div>
+                    <div id="songs" onclick="song()">Hit Songs</div>
+                    <div id="challenge" onclick="challenge()">Famous Quotes</div>
                 </div>
             </div>
     </div>
 
-
-
-    <div id="gamePage">
+<!-- Play Page (page3) -->
+    <div id="playPage">
         <p id="categoryName"></p>
         <div id="wordWrap">
             <div id="underline1">
