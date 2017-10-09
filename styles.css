@@ -1,4 +1,3 @@
-@import url(font-awesome.min.css);
 @import url("https://fonts.googleapis.com/css?family=Raleway:200,700|Source+Sans+Pro:300,600,300italic,600italic");
 
 /*
@@ -1958,7 +1957,7 @@ strong, b {
 
 
 
-body, html, #category, #category1, #category2, #bookTitles, #movies, #songs, #challenge, #homePage, #sp, #mp, #sp1, #mp1, #multiPage, #categoryPage #wordWrap, #wordWrap div, #restriction, #playPage, #letterBank div, #challengeBank div {
+body, html, #category, #category1, #category2, #bookTitles, #movies, #songs, #famousQuote, #homePage, #sp, #mp, #sp1, #mp1, #multiPage, #categoryPage #wordWrap, #wordWrap div, #restriction, #playPage, #letterBank div, #challengeBank div {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -2044,7 +2043,7 @@ body, html, #category, #category1, #category2, #bookTitles, #movies, #songs, #ch
     #category1{
         margin-bottom: 30px;
     }
-    #bookTitles, #movies, #songs, #challenge{
+    #bookTitles, #movies, #songs, #famousQuote{
 
         float: left;
         width: 48%;
@@ -2061,7 +2060,7 @@ body, html, #category, #category1, #category2, #bookTitles, #movies, #songs, #ch
         text-transform: uppercase;
         color: #FFFFFF
     }
-    #challenge, #movies{
+    #famousQuote, #movies{
         float: right;
     }
     #bookTitles {
@@ -2073,7 +2072,7 @@ body, html, #category, #category1, #category2, #bookTitles, #movies, #songs, #ch
     #songs{
       background: url("images/song.jpeg")
     }
-    #challenge{
+    #famousQuote{
       background: url("images/quotes.jpeg")
     }
 

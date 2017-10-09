@@ -4,9 +4,9 @@ var numRight = 0;
 var phraseLength = 0;
 var numChar = 0;
 var books = ["Don Quixote", "In Search Of Lost Time", "Ulysses", "The Odyssey", "War and Peace", "Moby Dick", "The Divine Comedy", "Hamlet", "The Adventures of Huckleberry Finn", "The Great Gatsby", "The Iliad", "One Hundred Years of Solitude", "Madame Bovary", "Crime and Punishment", "The Brothers Karamazov", "Pride and Prejudice", "Wuthering Heights", "The Sound and the Fury", "Lolita", "Nineteen Eighty Four", "Alice's Adventures in Wonderland", "Great Expectations", "Anna Karenina", "The Catcher", "Middlemarch", "Gulliver's Travels", "The Aeneid", "Heart of Darkness", "One Thousand and One Nights", "The Canterbury Tales", "The Stranger", " The Stories of Anton Chekhov", "The Grapes of Wrath", "The Red and the Black", "The Trial", "Leaves of Grass", "Absalom, Absalom", "Oedipus the King", "Candide", "The Quran", "The Republic", "The Bible", "Gulliver's Travels", "The Wealth of Nations", "Invisible Man", "Falconer", "Lord of the Flies", "The Lion, The Witch and the Wardrobe", "The Lord of the Rings", "Things Fall Apart", "To Kill a Mockingbird", "Tropic of Cancer", "A Clockwork Orange", "Animal Farm", "Blood Meridian", "Beloved", "All the King’s Men", "Gone With the Wind", "One Flew Over the Cuckoo’s Nest"];
-var movieSayings = ["Frankly, my dear, I don’t give a damn", "Here’s looking at you, kid", "You’re gonna need a bigger boat", "May the Force be with you", "Toto, I’ve a feeling we’re not in Kansas anymore", "You talkin’ to me?", "There’s no place like home", "The first rule of Fight Club is you do not talk about Fight Club", "I am your father", "Bond. James Bond", "I see dead people", "I’ll be back", "You can’t handle the truth!", "E.T phone home", "To infinity and beyond!", "Houston, we have a problem", "Show me the money!", "Say hello to my little friend", "I love the smell of napalm in the morning", "The greatest trick the devil ever pulled was convincing the world he didn't exist", "Keep your friends close, but your enemies closer", "Shaken, not stirred", "If you built it, he will come", "Hasta la vista, baby", "Go ahead, make my day", "My precious", "Good morning, Vietnam!", "Elementary, my dear Watson", "Wax on, wax off", "They may take our lives, but they'll never take our freedom!"];
-var songs = ["I came in like a wrecking ball", "Yesterday all my troubles seemed so far away", "Work, work, work, work, work", "Just a small town girl", "I still haven't found what I'm looking for", "Annie are you OK?", "Nah nah nah nah nah nah nah, nah nah nah nah, hey Jude", "Is this the real life? Is this just fantasy?", "We don't need no education", "Have you ever seen the rain?", "She's got eyes of the bluest skys", "So close, no matter how far", "I don't want to miss a thing", "Take my hand, we'll make it, I swear", "That's me in the corner", "A mulatto, an albino, a mosquito, my libido", "You've been thunderstruck", "Another one bites the dust", "Eye of the tiger", "B-B-B-Bennie and the Jets", "Sing us a song you're the piano man", "Hello darkness my old friend", "Somewhere over the rainbow blue birds fly", "Don't worry about a thing", "Imagine there's no heaven", "Can you feel the love tonight?"];
-var challenges = ["A"];
+var movieSayings = ["Frankly, my dear, I dont give a damn", "Heres looking at you, kid", "You`re gonna need a bigger boat", "May the Force be with you", "Toto, I’ve a feeling we are not in Kansas anymore", "You talkin to me?", "Theres no place like home", "The first rule of Fight Club is you do not talk about Fight Club", "I am your father", "Bond. James Bond", "I see dead people", "Ill be back", "You cant handle the truth!", "E.T phone home", "To infinity and beyond!", "Houston, we have a problem", "Show me the money!", "Say hello to my little friend", "I love the smell of napalm in the morning", "The greatest trick the devil ever pulled was convincing the world he didn't exist", "Keep your friends close, but your enemies closer", "Shaken, not stirred", "If you build it, he will come", "Hasta la vista, baby", "Go ahead, make my day", "My precious", "Good morning, Vietnam!", "Elementary, my dear Watson", "Wax on, wax off", "They may take our lives, but they'll never take our freedom!"];
+var songs = [];
+var quotes = ["A"];
 
 function startG(){
     document.getElementById('homePage').style.display = "none";
@@ -29,7 +29,7 @@ function movies(){
     hangman();
 }
 
-function song(){
+function hitSong(){
     rand = Math.floor(Math.random()*songs.length);
     word = songs[rand];
     document.getElementById('categoryPage').style.display = "none";
@@ -37,111 +37,19 @@ function song(){
     hangman();
 }
 
-function challenge(){
-    rand = Math.floor(Math.random()*challenges.length);
-    word = challenges[rand];
-    numChar = 1;
-    var letter = word.substring(0,1);
-        document.getElementById('letter1').innerHTML = letter;
-        document.getElementById('letter1').style.visibility = "hidden";
-        document.getElementById('underline1').style.display = "block";
-        document.getElementById('underline1').style.borderBottom = "3px solid black";
-    document.getElementById('categoryPage').style.display = "none";
-    document.getElementById('gamePage').style.display = "block";
-    document.getElementById('categoryName').innerHTML = "Guess every letter other than the correct one to win!";
-    document.getElementById('categoryName').style.width = "100%";
-    if(document.getElementById('underline1').offsetWidth == 50){
-        document.getElementById('categoryName').style.fontSize = "45px";
-    }
-    if(document.getElementById('underline1').offsetWidth == 28){
-        document.getElementById('categoryName').style.fontSize = "30px";
-    }
-    if(document.getElementById('underline1').offsetWidth == 18){
-        document.getElementById('categoryName').style.fontSize = "20px";
-    }
-    document.getElementById('letterBank').style.display = "none";
-    document.getElementById('challengeBank').style.display = "block";
-    phraseLength = 1;
-    draw();
+function famousQuote(){
+  rand = Math.floor(Math.random()*quotes.length);
+  word = quotes[rand];
+  document.getElementById('categoryPage').style.display = "none";
+  document.getElementById('categoryName').innerHTML = "What is this famous quote?";
+  hangman();
 }
-
-function challengeGuess(){
-    var target = event.target || event.srcElement;
-    target.style.visibility = "hidden";
-    var lower = target.id;
-    var upper = document.getElementById(lower).getAttribute('value');
-    var results = document.getElementById('results');
-    if(document.getElementById('letter1').innerHTML === upper){
-        document.getElementById('letter1').style.visibility = "visible";
-        numRight++;
-    }
-    if(numRight==0){
-        numWrong++;
-        hang();
-    }
-    if(numRight==1){
-        results.style.visibility = "visible";
-        results.style.color = "red";
-        results.innerHTML = "You lose!";
-        if(document.getElementById('underline1').offsetWidth == 50){
-            results.style.fontSize = "200px";
-            results.style.height = "200px";
-            results.style.lineHeight = "200px";
-        }
-        if(document.getElementById('underline1').offsetWidth == 28){
-            results.style.marginTop = "20px";
-            results.style.fontSize = "100px";
-            results.style.height = "100px";
-            results.style.lineHeight = "100px";
-        }
-        if(document.getElementById('underline1').offsetWidth == 18){
-            results.style.marginTop = "15px";
-            results.style.fontSize = "75px";
-            results.style.height = "75px";
-            results.style.lineHeight = "75px";
-        }
-        document.getElementById('challengeBank').style.display = "none";
-        document.getElementById('again').style.display = "block";
-        document.getElementById('home').style.display = "block";
-    }
-    if(numWrong==25){
-        results.style.visibility = "visible";
-        results.style.color = "#00b100";
-        results.innerHTML = "You win!";
-        if(document.getElementById('underline1').offsetWidth == 50){
-            results.style.fontSize = "200px";
-            results.style.height = "200px";
-            results.style.lineHeight = "200px";
-        }
-        if(document.getElementById('underline1').offsetWidth == 28){
-            results.style.marginTop = "20px";
-            results.style.fontSize = "100px";
-            results.style.height = "100px";
-            results.style.lineHeight = "100px";
-        }
-        if(document.getElementById('underline1').offsetWidth == 18){
-            results.style.marginTop = "15px";
-            results.style.fontSize = "75px";
-            results.style.height = "75px";
-            results.style.lineHeight = "75px";
-        }
-        document.getElementById('challengeBank').style.display = "none";
-        document.getElementById('again').style.display = "block";
-        document.getElementById('home').style.display = "block";
-        document.getElementById('letter1').style.visibility = "visible";
-    }
-}
-
 
 function hangman(){
     var x = word.length;
-        if(x==0){
-            alert("Please enter something into the text box.");
-            return;
-        }
     var y = x-1;
     var spaces = 0;
-    var validChar = new Array("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", " ", "?", "!", ",", ".", "-", "'");
+    var validChar = new Array("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", " ", "?", "!", ",", ".", "-", "`");
     for(z = 0; z < word.length; z++){
         var letter = word.substring(y,x);
         if(validChar.indexOf(letter) > -1){
@@ -165,7 +73,7 @@ function hangman(){
             document.getElementById('underline'+x).style.display = "block";
             spaces++;
         }
-        else if(letter === "?" || letter === "!" || letter === "," || letter === "." || letter === "-" || letter === "'"){
+        else if(letter === "?" || letter === "!" || letter === "," || letter === "." || letter === "-" || letter === "`"){
             document.getElementById('letter'+x).innerHTML = letter;
             document.getElementById('letter'+x).style.display = "block";
             document.getElementById('underline'+x).style.display = "block";
@@ -183,8 +91,6 @@ function hangman(){
     phraseLength = word.length - spaces;
     document.getElementById('playPage').style.display = "block";
     splitWords();
-    document.getElementById('challengeBank').style.display = "none";
-    draw();
 }
 
 function draw(){
@@ -244,62 +150,6 @@ function draw(){
             ctx.moveTo(150,40);
             ctx.lineTo(150,80);
             ctx.stroke();
-    var cntx = document.getElementById("homeHangman").getContext('2d');
-        cntx.fillStyle = "white";
-        cntx.lineWidth=3;
-        cntx.fillRect(0, 0, 300, 300);
-        cntx.beginPath(); //vertical bar
-            cntx.moveTo(50,270);
-            cntx.lineTo(50,25);
-            cntx.stroke();
-        cntx.beginPath(); //vertical bar long piece
-            cntx.moveTo(65,270);
-            cntx.lineTo(65,85);
-            cntx.stroke();
-        cntx.beginPath(); //vertical bar short piece
-            cntx.moveTo(65,64);
-            cntx.lineTo(65,40);
-            cntx.stroke();
-        cntx.beginPath(); //horizontal bar
-            cntx.moveTo(49,25);
-            cntx.lineTo(175,25);
-            cntx.stroke();
-        cntx.beginPath(); //horizontal bar short piece
-            cntx.moveTo(49,40);
-            cntx.lineTo(86,40);
-            cntx.stroke();
-        cntx.beginPath(); //horizontal bar long piece
-            cntx.moveTo(106,40);
-            cntx.lineTo(175,40);
-            cntx.stroke();
-        cntx.beginPath(); //small vertical bar
-            cntx.moveTo(173,25);
-            cntx.lineTo(173,40);
-            cntx.stroke();
-        cntx.beginPath(); //cross bar
-            cntx.moveTo(50,80);
-            cntx.lineTo(100,25);
-            cntx.stroke();
-        cntx.beginPath(); //cross bar
-            cntx.moveTo(60,90);
-            cntx.lineTo(111,35);
-            cntx.stroke();
-        cntx.beginPath(); //cross bar
-            cntx.moveTo(50,80);
-            cntx.lineTo(60,90);
-            cntx.stroke();
-        cntx.beginPath(); //cross bar
-            cntx.moveTo(100,25);
-            cntx.lineTo(111,35);
-            cntx.stroke();
-        cntx.beginPath(); //ground
-            cntx.moveTo(35,270);
-            cntx.lineTo(265,270);
-            cntx.stroke();
-        cntx.beginPath(); //noose
-            cntx.moveTo(150,40);
-            cntx.lineTo(150,80);
-            cntx.stroke();
 }
 
 function splitWords(){
@@ -926,10 +776,8 @@ function reset(){
         document.getElementById('underline'+a).style.borderBottom = "0px";
     }
     var bank = document.getElementById("letterBank").querySelectorAll("div");
-    var cBank = document.getElementById("challengeBank").querySelectorAll("div");
     for(b = 0; b < 26; b++){
         bank[b].style.visibility = "visible";
-        cBank[b].style.visibility = "visible";
     }
     numWrong = 0;
     numRight = 0;
@@ -952,7 +800,7 @@ function reset(){
     }
     else if(songs.indexOf(word) > -1){
         songs.splice(rand,1);
-        song();
+        hitSong();
     }
     else if(document.getElementById('charcount').innerHTML > 0){
         document.getElementById('gamePage').style.display = "none";
@@ -960,6 +808,6 @@ function reset(){
         document.getElementById('charcount').innerHTML = "0";
     }
     else{
-        challenge();
+        famousQuote();
     }
 }
