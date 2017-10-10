@@ -1,4 +1,9 @@
-// List of guesses in each category
+// djlowes Hangman //
+
+
+
+
+// Array of answers for each category
 
 var books = ["Don Quixote", "In Search Of Lost Time", "Ulysses", "The Odyssey", "War and Peace", "Moby Dick", "The Divine Comedy", "Hamlet", "The Adventures of Huckleberry Finn", "The Great Gatsby", "The Iliad", "One Hundred Years of Solitude", "Madame Bovary", "Crime and Punishment", "The Brothers Karamazov", "Pride and Prejudice", "Wuthering Heights", "The Sound and the Fury", "Lolita", "Nineteen Eighty Four", "Alice's Adventures in Wonderland", "Great Expectations", "Anna Karenina", "The Catcher", "Middlemarch", "Gulliver's Travels", "The Aeneid", "Heart of Darkness", "One Thousand and One Nights", "The Canterbury Tales", "The Stranger", " The Stories of Anton Chekhov", "The Grapes of Wrath", "The Red and the Black", "The Trial", "Leaves of Grass", "Absalom, Absalom", "Oedipus the King", "Candide", "The Quran", "The Republic", "The Bible", "Gulliver's Travels", "The Wealth of Nations", "Invisible Man", "Falconer", "Lord of the Flies", "The Lion, The Witch and the Wardrobe", "The Lord of the Rings", "Things Fall Apart", "To Kill a Mockingbird", "Tropic of Cancer", "A Clockwork Orange", "Animal Farm", "Blood Meridian", "Beloved", "All the King’s Men", "Gone With the Wind", "One Flew Over the Cuckoo’s Nest"];
 var movieSayings = ["Frankly, my dear, I dont give a damn", "Heres looking at you, kid", "Youre gonna need a bigger boat", "May the Force be with you", "Toto, I have a feeling we are not in Kansas anymore", "You talkin to me?", "Theres no place like home", "The first rule of Fight Club is you do not talk about Fight Club", "I am your father", "Bond. James Bond", "I see dead people", "Ill be back", "You cant handle the truth!", "E.T phone home", "To infinity and beyond!", "Houston, we have a problem", "Show me the money!", "Say hello to my little friend", "I love the smell of napalm in the morning", "The greatest trick the devil ever pulled was convincing the world he didn't exist", "Keep your friends close, but your enemies closer", "Shaken, not stirred", "If you build it, he will come", "Hasta la vista, baby", "Go ahead, make my day", "My precious", "Good morning, Vietnam!", "Elementary, my dear Watson", "Wax on, wax off", "They may take our lives, but they will never take our freedom!"];
@@ -47,19 +52,17 @@ function famousQuote(){
   hangman();
 }
 
-// Start points for below functions
+// Draws the lines of the hidden phrase to start guessing - initiates the game
 
-var phraseLength = 0;
-var numChar = 0;
-
-// Draws the selected hidden phrase to start guessing - initiates the game
+var fillLength = 0;
+var characters = 0;
 
 function hangman(){
   var spaces = 0;
   var x = phrase.length;
   var y = x-1;
     while (x>0){
-        numChar++;
+        characters++;
         var letter = phrase.substring(y,x);
         if(letter === " "){
             document.getElementById('letter'+x).innerHTML = "&nbsp;";
@@ -78,17 +81,16 @@ function hangman(){
             document.getElementById('letter'+x).innerHTML = letter;
             document.getElementById('letter'+x).style.visibility = "hidden";
             document.getElementById('underline'+x).style.display = "block";
-            document.getElementById('underline'+x).style.borderBottom = "3px solid black";
+            document.getElementById('underline'+x).style.borderBottom = "1px solid black";
         }
         x--;
         y--;
     }
-    phraseLength = phrase.length - spaces;
+    fillLength = phrase.length - spaces;
     document.getElementById('playPage').style.display = "block";
-    splitWords();
 }
 
-// Draws hangman canvass (stole from a github account)
+// Displays hangman canvass as starting point (stole from a github user)
 
 function draw(){
     var ctx = document.getElementById("hangman").getContext('2d');
@@ -149,99 +151,137 @@ function draw(){
             ctx.stroke();
 }
 
-function splitWords(){
-    var placeKeep = 0;
-    var countBack = 16;
-    if(numChar > 15){
-        while(countBack > 1){
-            if(document.getElementById('letter16').innerHTML == "&nbsp;"){
-                document.getElementById('underline16').style.width = "0px";
-                document.getElementById('underline16').style.marginRight = "0px";
-            }
-            if(document.getElementById('letter'+countBack).innerHTML == "&nbsp;"){
-                document.getElementById('underline'+countBack).style.width = (document.getElementById('underline1').offsetWidth)*(16-countBack)+"px";
-                placeKeep = countBack;
-                countBack = 0;
-            }
-            countBack--;
-        }
-    }
-    for(x=0;x<8;x++){
-        countBack = 15+placeKeep;
-        if(numChar > countBack){
-            while(countBack > 1){
-                if(document.getElementById('letter'+countBack).innerHTML == "&nbsp;"){
-                    document.getElementById('underline'+countBack).style.width = (document.getElementById('underline1').offsetWidth*((16+placeKeep)-countBack))+"px";
-                    placeKeep = countBack;
-                    countBack = 0;
-                }
-                countBack--;
-            }
-        }
-    }
 
-}
-// Start points for below functions
+// Guessing
+
+//var numWrong = 0;
+//var numRight = 0;
+
+//function guessLetter(){
+//    var correct = 0;
+//   var target = event.target || event.srcElement;
+//    target.style.visibility = "hidden";
+//    var lower = target.id;
+//    var upper = document.getElementById(lower).getAttribute('value');
+//    var results = document.getElementById('results');
+//    var ul1 = document.getElementById('underline1').offsetWidth;
+//    for(a = 1; a < 101; a++){
+//        if(document.getElementById('letter'+a).innerHTML === upper || document.getElementById('letter'+a).innerHTML === lower){
+//            document.getElementById('letter'+a).style.visibility = "visible";
+//            correct++;
+//            numRight++;
+//        }
+//    }
+//    if(correct==0){
+//        numWrong++;
+//        hang();
+//    }
+//    if(numWrong==6){
+//        results.style.visibility = "visible";
+//        results.style.color = "red";
+//        results.innerHTML = "You can't miss another letter!";
+//        if(ul1 == 50){
+//            results.style.lineHeight = "70px";
+//            results.style.fontSize = "30px";
+//        }
+//        if(ul1 == 28){
+//            results.style.lineHeight = "50px";
+//            results.style.fontSize = "25px";
+//        }
+//        if(ul1 == 18){
+//            results.style.lineHeight = "40px";
+//            results.style.fontSize = "20px";
+//        }
+//    }
+//    if(numWrong==7){
+//        results.innerHTML = "You lose!<br>Keep guessing until you get it right.";
+//        document.getElementById('again').style.display = "block";
+//        document.getElementById('home').style.display = "block";
+//        if(ul1 == 50){
+//            results.style.lineHeight = "40px";
+//        }
+//        if(ul1 == 28){
+//            results.style.lineHeight = "25px";
+//        }
+//        if(ul1 == 18){
+//            results.style.lineHeight = "20px";
+//        }
+//    }
+//    if(numRight==fillLength){
+//        win();
+//    }
+//}
 
 var numWrong = 0;
 var numRight = 0;
+var keyCode =
+[
+  65,
+  66,
+  67,
+  68,
+  69,
+  70,
+  71,
+  72,
+  73,
+  74,
+  75,
+  76,
+  77,
+  78,
+  79,
+  80,
+  81,
+  82,
+  83,
+  84,
+  85,
+  86,
+  87,
+  88,
+  89,
+  90
+]
+addEventListener("keydown", function guessLetter() {
+  var correct = 0;
+  var target = event.target;
+  target.style.visibility = "visible";
+  var lower = target.id;
+  var upper = document.getElementById(lower).getAttribute('value');
+  var ul1 = document.getElementById('underline1').offsetWidth;
+
+  for(let i=0; i<keyCode.length; i++)) {
+    if (guessLetter.keyCode == keyCodes[i] && document.getElementById('letter'+a).innerHTML === upper || document.getElementById('letter'+a).innerHTML === lower) {
+      document.getElementById('letter'+a).style.visibility = "visible";
+        correct++;
+        numRight++;
+    }
+  }
 
 
 
-function guessLetter(){
-    var correct = 0;
-    var target = event.target || event.srcElement;
-    target.style.visibility = "hidden";
-    var lower = target.id;
-    var upper = document.getElementById(lower).getAttribute('value');
-    var results = document.getElementById('results');
-    var ul1 = document.getElementById('underline1').offsetWidth;
-    for(a = 1; a < 101; a++){
-        if(document.getElementById('letter'+a).innerHTML === upper || document.getElementById('letter'+a).innerHTML === lower){
-            document.getElementById('letter'+a).style.visibility = "visible";
-            correct++;
-            numRight++;
-        }
-    }
-    if(correct==0){
-        numWrong++;
-        hang();
-    }
-    if(numWrong==6){
-        results.style.visibility = "visible";
-        results.style.color = "red";
-        results.innerHTML = "You can't miss another letter!";
-        if(ul1 == 50){
-            results.style.lineHeight = "70px";
-            results.style.fontSize = "30px";
-        }
-        if(ul1 == 28){
-            results.style.lineHeight = "50px";
-            results.style.fontSize = "25px";
-        }
-        if(ul1 == 18){
-            results.style.lineHeight = "40px";
-            results.style.fontSize = "20px";
-        }
-    }
-    if(numWrong==7){
-        results.innerHTML = "You lose!<br>Keep guessing until you get it right.";
-        document.getElementById('again').style.display = "block";
-        document.getElementById('home').style.display = "block";
-        if(ul1 == 50){
-            results.style.lineHeight = "40px";
-        }
-        if(ul1 == 28){
-            results.style.lineHeight = "25px";
-        }
-        if(ul1 == 18){
-            results.style.lineHeight = "20px";
-        }
-    }
-    if(numRight==phraseLength){
-        win();
-    }
-}
+// - on load, listen for keydown events
+
+// if keydown X has been heard:
+//  1. make letter that you have guessed visible
+//  2. Mark counter with 'you have X more guesses' (remove one) if the guess is incorrect
+//  3. Mark Hangman piece if guess is incorrect
+//  4. Add letter to the top answer if the guess is correct
+//  5. Make sure that you cannot press that same letter again
+
+});
+
+
+
+
+
+
+
+
+
+
+// Winning
 
 function win(){
     var ul1 = document.getElementById('underline1').offsetWidth;
@@ -289,6 +329,8 @@ function win(){
         }
     }
 }
+
+// Draws hangman when guesses are wrong (stole from a github account)
 
 function hang(){
     var ctx = document.getElementById("hangman").getContext('2d');
@@ -784,8 +826,8 @@ function reset(){
     }
     numWrong = 0;
     numRight = 0;
-    phraseLength = 0;
-    numChar = 0;
+    fillLength = 0;
+    characters = 0;
     results.style.marginTop = "5px";
     results.style.lineHeight = "40px";
     results.innerHTML = " ";

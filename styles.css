@@ -1806,9 +1806,6 @@ strong, b {
     	}
 
 
-
-
-
       /* Button */
 
       	input[type="submit"],
@@ -1954,9 +1951,6 @@ strong, b {
 
 
 
-
-
-
 body, html, #category, #category1, #category2, #bookTitles, #movies, #songs, #famousQuote, #homePage, #sp, #mp, #sp1, #mp1, #multiPage, #categoryPage #wordWrap, #wordWrap div, #restriction, #playPage, #letterBank div, #challengeBank div {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -2014,9 +2008,10 @@ body, html, #category, #category1, #category2, #bookTitles, #movies, #songs, #fa
 
 #categoryPage{
     display: none;
-    margin-top: 10.5em;
-    margin-left: 7.5em;
-    margin-right: 7.5em;
+    margin-top: 10%;
+    margin-left: 20%;
+    margin-right: 20%;
+		margin-bottom: 30%;
     text-align: center;
     border: 1px solid white;
     border-radius: 15px;
@@ -2172,24 +2167,6 @@ body, html, #category, #category1, #category2, #bookTitles, #movies, #songs, #fa
       font-weight: 700;
 
   	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
