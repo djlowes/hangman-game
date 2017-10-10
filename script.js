@@ -1,71 +1,66 @@
+// List of guesses in each category
 
-var numWrong = 0;
-var numRight = 0;
-var phraseLength = 0;
-var numChar = 0;
 var books = ["Don Quixote", "In Search Of Lost Time", "Ulysses", "The Odyssey", "War and Peace", "Moby Dick", "The Divine Comedy", "Hamlet", "The Adventures of Huckleberry Finn", "The Great Gatsby", "The Iliad", "One Hundred Years of Solitude", "Madame Bovary", "Crime and Punishment", "The Brothers Karamazov", "Pride and Prejudice", "Wuthering Heights", "The Sound and the Fury", "Lolita", "Nineteen Eighty Four", "Alice's Adventures in Wonderland", "Great Expectations", "Anna Karenina", "The Catcher", "Middlemarch", "Gulliver's Travels", "The Aeneid", "Heart of Darkness", "One Thousand and One Nights", "The Canterbury Tales", "The Stranger", " The Stories of Anton Chekhov", "The Grapes of Wrath", "The Red and the Black", "The Trial", "Leaves of Grass", "Absalom, Absalom", "Oedipus the King", "Candide", "The Quran", "The Republic", "The Bible", "Gulliver's Travels", "The Wealth of Nations", "Invisible Man", "Falconer", "Lord of the Flies", "The Lion, The Witch and the Wardrobe", "The Lord of the Rings", "Things Fall Apart", "To Kill a Mockingbird", "Tropic of Cancer", "A Clockwork Orange", "Animal Farm", "Blood Meridian", "Beloved", "All the King’s Men", "Gone With the Wind", "One Flew Over the Cuckoo’s Nest"];
-var movieSayings = ["Frankly, my dear, I dont give a damn", "Heres looking at you, kid", "You`re gonna need a bigger boat", "May the Force be with you", "Toto, I’ve a feeling we are not in Kansas anymore", "You talkin to me?", "Theres no place like home", "The first rule of Fight Club is you do not talk about Fight Club", "I am your father", "Bond. James Bond", "I see dead people", "Ill be back", "You cant handle the truth!", "E.T phone home", "To infinity and beyond!", "Houston, we have a problem", "Show me the money!", "Say hello to my little friend", "I love the smell of napalm in the morning", "The greatest trick the devil ever pulled was convincing the world he didn't exist", "Keep your friends close, but your enemies closer", "Shaken, not stirred", "If you build it, he will come", "Hasta la vista, baby", "Go ahead, make my day", "My precious", "Good morning, Vietnam!", "Elementary, my dear Watson", "Wax on, wax off", "They may take our lives, but they'll never take our freedom!"];
-var songs = [];
-var quotes = ["A"];
+var movieSayings = ["Frankly, my dear, I dont give a damn", "Heres looking at you, kid", "Youre gonna need a bigger boat", "May the Force be with you", "Toto, I have a feeling we are not in Kansas anymore", "You talkin to me?", "Theres no place like home", "The first rule of Fight Club is you do not talk about Fight Club", "I am your father", "Bond. James Bond", "I see dead people", "Ill be back", "You cant handle the truth!", "E.T phone home", "To infinity and beyond!", "Houston, we have a problem", "Show me the money!", "Say hello to my little friend", "I love the smell of napalm in the morning", "The greatest trick the devil ever pulled was convincing the world he didn't exist", "Keep your friends close, but your enemies closer", "Shaken, not stirred", "If you build it, he will come", "Hasta la vista, baby", "Go ahead, make my day", "My precious", "Good morning, Vietnam!", "Elementary, my dear Watson", "Wax on, wax off", "They may take our lives, but they will never take our freedom!"];
+var songs = ["Smells Like Teen Spirit", "Imagine", "One", "Billie Jean" ,"Bohemian Rhapsody", "Hey Jude", "Like A Rolling Stone", "I Cant Get No Satisfaction", "God Save The Queen", "London Calling", "Hotel California", "Stairway To Heaven", "The Twist", "Live Forever", "Life On Mars?", "Heartbreak Hotel", "Over The Rainbow", "Born To Run", "Creep", "Respect", "Dancing Queen", "Good Vibrations", "Purple Haze", "Yesterday", "No Woman No Cry", "Hallelujah", "Stand By Me", "When Doves Cry", "River Deep Mountain High"];
+var quotes = ["That which does not kill us makes us stronger.", "In the middle of every difficulty lies opportunity.", "You must be the change you wish to see in the world.", "If you want something done right, do it yourself.", "The unexamined life is not worth living.", "Better to have loved and lost, than to have never loved at all.", "An eye for an eye leaves the whole world blind.", "Necessity is the mother of invention.", "Give a man a fish and you feed him for a day, teach a man to fish and you feed him for a lifetime.", "With great power comes great responsibility.", "The pen is mightier than the sword.", "It is always darkest just before the dawn.", "If you are going through hell, keep going.", "A penny saved is a penny earned.", "Ignorance is bliss.", "Fortune favours the bold.", "I think therefore I am.", "Hell has no fury like a woman scorned.", "When the going gets tough, the tough get going.", "Nothing is certain except for death and taxes."];
+
+// Displays play page
 
 function startG(){
     document.getElementById('homePage').style.display = "none";
     document.getElementById('categoryPage').style.display = "block";
 }
 
+// Randomly selects phrase from array in each category on play page
+
 function bookTitles(){
-    rand = Math.floor(Math.random()*books.length);
-    word = books[rand];
+    r = Math.floor(Math.random()*books.length);
+    phrase = books[r];
+      console.log(phrase);
     document.getElementById('categoryPage').style.display = "none";
     document.getElementById('categoryName').innerHTML = "What's the name of this famous book?";
     hangman();
 }
-
 function movies(){
-    rand = Math.floor(Math.random()*movieSayings.length);
-    word = movieSayings[rand];
+    r = Math.floor(Math.random()*movieSayings.length);
+    phrase = movieSayings[r];
+      console.log(phrase);
     document.getElementById('categoryPage').style.display = "none";
     document.getElementById('categoryName').innerHTML = "What is this famous movie quote?";
     hangman();
 }
-
 function hitSong(){
-    rand = Math.floor(Math.random()*songs.length);
-    word = songs[rand];
+    r = Math.floor(Math.random()*songs.length);
+    phrase = songs[r];
+      console.log(phrase);
     document.getElementById('categoryPage').style.display = "none";
     document.getElementById('categoryName').innerHTML = "Song titles and lyrics";
     hangman();
 }
-
 function famousQuote(){
-  rand = Math.floor(Math.random()*quotes.length);
-  word = quotes[rand];
+  r = Math.floor(Math.random()*quotes.length);
+  phrase = quotes[r];
+    console.log(phrase);
   document.getElementById('categoryPage').style.display = "none";
   document.getElementById('categoryName').innerHTML = "What is this famous quote?";
   hangman();
 }
 
+// Start points for below functions
+
+var phraseLength = 0;
+var numChar = 0;
+
+// Draws the selected hidden phrase to start guessing - initiates the game
+
 function hangman(){
-    var x = word.length;
-    var y = x-1;
-    var spaces = 0;
-    var validChar = new Array("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", " ", "?", "!", ",", ".", "-", "`");
-    for(z = 0; z < word.length; z++){
-        var letter = word.substring(y,x);
-        if(validChar.indexOf(letter) > -1){
-            x--;
-            y--;
-        }
-        else{
-            alert("Please remove any special characters.");
-            return;
-        }
-    }
-    x = word.length;
-    y = x-1;
+  var spaces = 0;
+  var x = phrase.length;
+  var y = x-1;
     while (x>0){
         numChar++;
-        var letter = word.substring(y,x);
+        var letter = phrase.substring(y,x);
         if(letter === " "){
             document.getElementById('letter'+x).innerHTML = "&nbsp;";
             document.getElementById('letter'+x).style.visibility = "hidden";
@@ -73,7 +68,7 @@ function hangman(){
             document.getElementById('underline'+x).style.display = "block";
             spaces++;
         }
-        else if(letter === "?" || letter === "!" || letter === "," || letter === "." || letter === "-" || letter === "`"){
+        else if(letter === "?" || letter === "!" || letter === "," || letter === "." || letter === "-" || letter === "'"){
             document.getElementById('letter'+x).innerHTML = letter;
             document.getElementById('letter'+x).style.display = "block";
             document.getElementById('underline'+x).style.display = "block";
@@ -88,10 +83,12 @@ function hangman(){
         x--;
         y--;
     }
-    phraseLength = word.length - spaces;
+    phraseLength = phrase.length - spaces;
     document.getElementById('playPage').style.display = "block";
     splitWords();
 }
+
+// Draws hangman canvass (stole from a github account)
 
 function draw(){
     var ctx = document.getElementById("hangman").getContext('2d');
@@ -184,6 +181,12 @@ function splitWords(){
     }
 
 }
+// Start points for below functions
+
+var numWrong = 0;
+var numRight = 0;
+
+
 
 function guessLetter(){
     var correct = 0;
@@ -790,16 +793,16 @@ function reset(){
     again.style.marginTop = "0px";
     again.style.display = "none";
     document.getElementById('home').style.display = "none";
-    if(books.indexOf(word) > -1){
-        books.splice(rand,1);
+    if(books.indexOf(phrase) > -1){
+        books.splice(r,1);
         bookTitles();
     }
-    else if(movieSayings.indexOf(word) > -1){
-        movieSayings.splice(rand,1);
+    else if(movieSayings.indexOf(phrase) > -1){
+        movieSayings.splice(r,1);
         movies();
     }
-    else if(songs.indexOf(word) > -1){
-        songs.splice(rand,1);
+    else if(songs.indexOf(phrase) > -1){
+        songs.splice(r,1);
         hitSong();
     }
     else if(document.getElementById('charcount').innerHTML > 0){
