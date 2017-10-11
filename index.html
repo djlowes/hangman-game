@@ -23,7 +23,7 @@
 <!-- Homepage -->
     <div id="homePage">
       <h2>HANGMAN</h2>
-      <h3>Play it quick, play it slow, play it at whatever pace you like. Just play it.</h3>
+      <h3>It's simple. It's basic. But you will not beat the hangman...</h3>
         <br/>
         <br/>
       <div class="button special" onclick="startG()">Start Now</div>
@@ -47,7 +47,7 @@
 
 <!-- Play Page (page3) -->
     <div id="playPage">
-        <p id="categoryName"></p>
+        <p id="categoryName"></p><br /><br />
         <div id="wordWrap">
             <div id="underline1">
                 <div id="letter1"></div>
@@ -351,39 +351,38 @@
             </div>
         </div>
         <canvas id="hangman" width="300px" height="300px"></canvas>
-        <div id="results"></div>
-
-				 <!-- <div id="letterBank">
-                <div id="a" value="A" onclick="guessLetter()">A</div>
-								<div id="b" value="B" onclick="guessLetter()">B</div>
-								<div id="c" value="C" onclick="guessLetter()">C</div>
-								<div id="d" value="D" onclick="guessLetter()">D</div>
-								<div id="e" value="E" onclick="guessLetter()">E</div>
-								<div id="f" value="F" onclick="guessLetter()">F</div>
-								<div id="g" value="G" onclick="guessLetter()">G</div>
-								<div id="h" value="H" onclick="guessLetter()">H</div>
-								<div id="i" value="I" onclick="guessLetter()">I</div>
-								<div id="j" value="J" onclick="guessLetter()">J</div>
-								<div id="k" value="K" onclick="guessLetter()">K</div>
-								<div id="l" value="L" onclick="guessLetter()">L</div>
-								<div id="m" value="M" onclick="guessLetter()">M</div>
-								<div id="n" value="N" onclick="guessLetter()">N</div>
-								<div id="o" value="O" onclick="guessLetter()">O</div>
-								<div id="p" value="P" onclick="guessLetter()">P</div>
-								<div id="q" value="Q" onclick="guessLetter()">Q</div>
-								<div id="r" value="R" onclick="guessLetter()">R</div>
-								<div id="s" value="S" onclick="guessLetter()">S</div>
-								<div id="t" value="T" onclick="guessLetter()">T</div>
-								<div id="u" value="U" onclick="guessLetter()">U</div>
-								<div id="v" value="V" onclick="guessLetter()">V</div>
-								<div id="w" value="W" onclick="guessLetter()">W</div>
-								<div id="x" value="X" onclick="guessLetter()">X</div>
-								<div id="y" value="Y" onclick="guessLetter()">Y</div>
-								<div id="z" value="Z" onclick="guessLetter()">Z</div>
-        </div> -->
-
-        <div id="again" onClick="reset()">Play again!</div>
-        <div id="home" onClick="window.location.reload()">Main menu</div>
+				<div>Click the letters on your keyboard to guess!</div>
+				<div>Your guesses so far</div>
+				  <div id="letterBank">
+                <div id="a">A</div>
+								<div id="b">B</div>
+								<div id="c">C</div>
+								<div id="d">D</div>
+								<div id="e">E</div>
+								<div id="f">F</div>
+								<div id="g">G</div>
+								<div id="h">H</div>
+								<div id="i">I</div>
+								<div id="j">J</div>
+								<div id="k">K</div>
+								<div id="l">L</div>
+								<div id="m">M</div>
+								<div id="n">N</div>
+								<div id="o">O</div>
+								<div id="p">P</div>
+								<div id="q">Q</div>
+								<div id="r">R</div>
+								<div id="s">S</div>
+								<div id="t">T</div>
+								<div id="u">U</div>
+								<div id="v">V</div>
+								<div id="w">W</div>
+								<div id="x">X</div>
+								<div id="y">Y</div>
+								<div id="z">Z</div>
+        </div>
+				<div id="results"></div>
+        <div id="home" onClick="window.location.reload()">Play Again</div>
 
     </div>
 

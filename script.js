@@ -1,12 +1,9 @@
 // djlowes Hangman //
 
-
-
-
 // Array of answers for each category
 
 var books = ["Don Quixote", "In Search Of Lost Time", "Ulysses", "The Odyssey", "War and Peace", "Moby Dick", "The Divine Comedy", "Hamlet", "The Adventures of Huckleberry Finn", "The Great Gatsby", "The Iliad", "One Hundred Years of Solitude", "Madame Bovary", "Crime and Punishment", "The Brothers Karamazov", "Pride and Prejudice", "Wuthering Heights", "The Sound and the Fury", "Lolita", "Nineteen Eighty Four", "Alice's Adventures in Wonderland", "Great Expectations", "Anna Karenina", "The Catcher", "Middlemarch", "Gulliver's Travels", "The Aeneid", "Heart of Darkness", "One Thousand and One Nights", "The Canterbury Tales", "The Stranger", " The Stories of Anton Chekhov", "The Grapes of Wrath", "The Red and the Black", "The Trial", "Leaves of Grass", "Absalom, Absalom", "Oedipus the King", "Candide", "The Quran", "The Republic", "The Bible", "Gulliver's Travels", "The Wealth of Nations", "Invisible Man", "Falconer", "Lord of the Flies", "The Lion, The Witch and the Wardrobe", "The Lord of the Rings", "Things Fall Apart", "To Kill a Mockingbird", "Tropic of Cancer", "A Clockwork Orange", "Animal Farm", "Blood Meridian", "Beloved", "All the King’s Men", "Gone With the Wind", "One Flew Over the Cuckoo’s Nest"];
-var movieSayings = ["Frankly, my dear, I dont give a damn", "Heres looking at you, kid", "Youre gonna need a bigger boat", "May the Force be with you", "Toto, I have a feeling we are not in Kansas anymore", "You talkin to me?", "Theres no place like home", "The first rule of Fight Club is you do not talk about Fight Club", "I am your father", "Bond. James Bond", "I see dead people", "Ill be back", "You cant handle the truth!", "E.T phone home", "To infinity and beyond!", "Houston, we have a problem", "Show me the money!", "Say hello to my little friend", "I love the smell of napalm in the morning", "The greatest trick the devil ever pulled was convincing the world he didn't exist", "Keep your friends close, but your enemies closer", "Shaken, not stirred", "If you build it, he will come", "Hasta la vista, baby", "Go ahead, make my day", "My precious", "Good morning, Vietnam!", "Elementary, my dear Watson", "Wax on, wax off", "They may take our lives, but they will never take our freedom!"];
+var movieSayings = ["Frankly, my dear, I don't give a damn", "Here's looking at you, kid", "You're gonna need a bigger boat", "May the force be with you", "Toto, I have a feeling we are not in Kansas anymore", "You talkin' to me?", "There's no place like home", "The first rule of fight club is you do not talk about fight club", "I am your father", "Bond. James Bond", "I see dead people", "I'll be back", "You can't handle the truth!", "E.T phone home", "To infinity and beyond!", "Houston, we have a problem", "Show me the money!", "Say hello to my little friend", "I love the smell of napalm in the morning", "The greatest trick the devil ever pulled was convincing the world he didn't exist", "Keep your friends close, but your enemies closer", "Shaken, not stirred", "If you build it, he will come", "Hasta la vista, baby", "Go ahead, make my day", "My precious", "Good morning, Vietnam!", "Elementary, my dear Watson", "Wax on, wax off", "They may take our lives, but they will never take our freedom!"];
 var songs = ["Smells Like Teen Spirit", "Imagine", "One", "Billie Jean" ,"Bohemian Rhapsody", "Hey Jude", "Like A Rolling Stone", "I Cant Get No Satisfaction", "God Save The Queen", "London Calling", "Hotel California", "Stairway To Heaven", "The Twist", "Live Forever", "Life On Mars?", "Heartbreak Hotel", "Over The Rainbow", "Born To Run", "Creep", "Respect", "Dancing Queen", "Good Vibrations", "Purple Haze", "Yesterday", "No Woman No Cry", "Hallelujah", "Stand By Me", "When Doves Cry", "River Deep Mountain High"];
 var quotes = ["That which does not kill us makes us stronger.", "In the middle of every difficulty lies opportunity.", "You must be the change you wish to see in the world.", "If you want something done right, do it yourself.", "The unexamined life is not worth living.", "Better to have loved and lost, than to have never loved at all.", "An eye for an eye leaves the whole world blind.", "Necessity is the mother of invention.", "Give a man a fish and you feed him for a day, teach a man to fish and you feed him for a lifetime.", "With great power comes great responsibility.", "The pen is mightier than the sword.", "It is always darkest just before the dawn.", "If you are going through hell, keep going.", "A penny saved is a penny earned.", "Ignorance is bliss.", "Fortune favours the bold.", "I think therefore I am.", "Hell has no fury like a woman scorned.", "When the going gets tough, the tough get going.", "Nothing is certain except for death and taxes."];
 
@@ -40,7 +37,7 @@ function hitSong(){
     phrase = songs[r];
       console.log(phrase);
     document.getElementById('categoryPage').style.display = "none";
-    document.getElementById('categoryName').innerHTML = "Song titles and lyrics";
+    document.getElementById('categoryName').innerHTML = "What's this famous song title?";
     hangman();
 }
 function famousQuote(){
@@ -154,130 +151,71 @@ function draw(){
 
 // Guessing
 
-//var numWrong = 0;
-//var numRight = 0;
-
-//function guessLetter(){
-//    var correct = 0;
-//   var target = event.target || event.srcElement;
-//    target.style.visibility = "hidden";
-//    var lower = target.id;
-//    var upper = document.getElementById(lower).getAttribute('value');
-//    var results = document.getElementById('results');
-//    var ul1 = document.getElementById('underline1').offsetWidth;
-//    for(a = 1; a < 101; a++){
-//        if(document.getElementById('letter'+a).innerHTML === upper || document.getElementById('letter'+a).innerHTML === lower){
-//            document.getElementById('letter'+a).style.visibility = "visible";
-//            correct++;
-//            numRight++;
-//        }
-//    }
-//    if(correct==0){
-//        numWrong++;
-//        hang();
-//    }
-//    if(numWrong==6){
-//        results.style.visibility = "visible";
-//        results.style.color = "red";
-//        results.innerHTML = "You can't miss another letter!";
-//        if(ul1 == 50){
-//            results.style.lineHeight = "70px";
-//            results.style.fontSize = "30px";
-//        }
-//        if(ul1 == 28){
-//            results.style.lineHeight = "50px";
-//            results.style.fontSize = "25px";
-//        }
-//        if(ul1 == 18){
-//            results.style.lineHeight = "40px";
-//            results.style.fontSize = "20px";
-//        }
-//    }
-//    if(numWrong==7){
-//        results.innerHTML = "You lose!<br>Keep guessing until you get it right.";
-//        document.getElementById('again').style.display = "block";
-//        document.getElementById('home').style.display = "block";
-//        if(ul1 == 50){
-//            results.style.lineHeight = "40px";
-//        }
-//        if(ul1 == 28){
-//            results.style.lineHeight = "25px";
-//        }
-//        if(ul1 == 18){
-//            results.style.lineHeight = "20px";
-//        }
-//    }
-//    if(numRight==fillLength){
-//        win();
-//    }
-//}
+//Issue 1. When you enter the same key twice it counts as numRight & numWrong so it exits the game early (before win/loss)
+//Issue 2. Stops keypress when win/ lost when finished
 
 var numWrong = 0;
 var numRight = 0;
-var keyCode =
-[
-  65,
-  66,
-  67,
-  68,
-  69,
-  70,
-  71,
-  72,
-  73,
-  74,
-  75,
-  76,
-  77,
-  78,
-  79,
-  80,
-  81,
-  82,
-  83,
-  84,
-  85,
-  86,
-  87,
-  88,
-  89,
-  90
-]
-addEventListener("keydown", function guessLetter() {
-  var correct = 0;
-  var target = event.target;
-  target.style.visibility = "visible";
-  var lower = target.id;
-  var upper = document.getElementById(lower).getAttribute('value');
-  var ul1 = document.getElementById('underline1').offsetWidth;
+var letterDisplay = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 
-  for(let i=0; i<keyCode.length; i++)) {
-    if (guessLetter.keyCode == keyCodes[i] && document.getElementById('letter'+a).innerHTML === upper || document.getElementById('letter'+a).innerHTML === lower) {
-      document.getElementById('letter'+a).style.visibility = "visible";
-        correct++;
-        numRight++;
+document.onkeyup = function guessLetter() {
+  var results = document.getElementById('results');
+  var ul1 = document.getElementById('underline1').offsetWidth;
+  var correct = 0;
+  var userGuess = event.key;
+  for (let a = 1; a < 101; a++) {
+    for(let g = 0; g < letterDisplay.length; g++) {
+      var top = document.getElementById('letter'+a);
+    if (userGuess === letterDisplay[g] && userGuess === top.innerHTML.toLowerCase()) {
+      top.style.visibility = "visible";
+      document.getElementById(letterDisplay[g]).style.visibility = 'visible';
+      correct++;
+      numRight++;
+    } else if (userGuess === letterDisplay[g] && userGuess != top.innerHTML.toLowerCase()) {
+        document.getElementById(letterDisplay[g]).style.visibility = 'visible';
+      }
     }
   }
 
+  if(correct==0) {
+    numWrong++;
+    hang();
+  }
 
-
-// - on load, listen for keydown events
-
-// if keydown X has been heard:
-//  1. make letter that you have guessed visible
-//  2. Mark counter with 'you have X more guesses' (remove one) if the guess is incorrect
-//  3. Mark Hangman piece if guess is incorrect
-//  4. Add letter to the top answer if the guess is correct
-//  5. Make sure that you cannot press that same letter again
-
-});
-
-
-
-
-
-
-
+  if(numWrong==6) {
+    results.style.visibility = "visible";
+    results.style.color = "red";
+    results.innerHTML = "You can't miss another letter!";
+      if(ul1 == 50) {
+        results.style.lineHeight = "70px";
+        results.style.fontSize = "30px";
+      }
+      if(ul1 == 28) {
+        results.style.lineHeight = "50px";
+        results.style.fontSize = "25px";
+      }
+      if(ul1 == 18) {
+        results.style.lineHeight = "40px";
+        results.style.fontSize = "20px";
+      }
+    }
+    if(numWrong==7){
+      results.innerHTML = "You lose!<br>Keep guessing until you get it right.";
+      document.getElementById('home').style.display = "block";
+        if(ul1 == 50){
+          results.style.lineHeight = "40px";
+        }
+        if(ul1 == 28){
+          results.style.lineHeight = "25px";
+        }
+        if(ul1 == 18){
+          results.style.lineHeight = "20px";
+        }
+    }
+    if(numRight==fillLength){
+      win();
+    }
+};
 
 
 
@@ -285,14 +223,12 @@ addEventListener("keydown", function guessLetter() {
 
 function win(){
     var ul1 = document.getElementById('underline1').offsetWidth;
-    var again = document.getElementById('again');
     var results = document.getElementById('results');
         results.style.visibility = "visible";
         results.style.color = "#00b100";
     if(numWrong > 6){
         results.innerHTML = "It's about time you figured it out...";
         document.getElementById('letterBank').style.display = "none";
-        again.style.display = "block";
         document.getElementById('home').style.display = "block";
         if(ul1 == 50){
             results.style.lineHeight = "70px";
@@ -310,20 +246,16 @@ function win(){
     else{
         results.innerHTML = "You win!";
         document.getElementById('letterBank').style.display = "none";
-        again.style.display = "block";
         document.getElementById('home').style.display = "block";
         if(ul1 == 50){
-            again.style.marginTop = "75px";
             results.style.marginTop = "75px";
             results.style.fontSize = "200px";
         }
         if(ul1 == 28){
-            again.style.marginTop = "50px";
             results.style.marginTop = "40px";
             results.style.fontSize = "100px";
         }
         if(ul1 == 18){
-            again.style.marginTop = "40px";
             results.style.marginTop = "15px";
             results.style.fontSize = "75px";
         }
@@ -331,6 +263,7 @@ function win(){
 }
 
 // Draws hangman when guesses are wrong (stole from a github account)
+
 
 function hang(){
     var ctx = document.getElementById("hangman").getContext('2d');
@@ -795,64 +728,5 @@ function hang(){
             ctx.moveTo(77,240);
             ctx.lineTo(97,240);
             ctx.stroke();
-    }
-}
-
-function reset(){
-    var ul1 = document.getElementById('underline1').offsetWidth;
-    var results = document.getElementById('results');
-    var again = document.getElementById('again');
-    for(a = 1; a < 101; a++){
-        document.getElementById('letter'+a).innerHTML = "&nbsp;";
-        document.getElementById('underline'+a).style.width = ul1 + "px";
-        if(ul1 == 50){
-            document.getElementById('underline'+a).style.marginRight = "5px";
-            results.style.height = "70px";
-        }
-        else if(ul1 == 28){
-            document.getElementById('underline'+a).style.marginRight = "3px";
-            results.style.height = "50px";
-        }
-        else{
-            document.getElementById('underline'+a).style.marginRight = "3px";
-            results.style.height = "40px";
-        }
-        document.getElementById('underline'+a).style.display = "none";
-        document.getElementById('underline'+a).style.borderBottom = "0px";
-    }
-    var bank = document.getElementById("letterBank").querySelectorAll("div");
-    for(b = 0; b < 26; b++){
-        bank[b].style.visibility = "visible";
-    }
-    numWrong = 0;
-    numRight = 0;
-    fillLength = 0;
-    characters = 0;
-    results.style.marginTop = "5px";
-    results.style.lineHeight = "40px";
-    results.innerHTML = " ";
-    document.getElementById('letterBank').style.display = "block";
-    again.style.marginTop = "0px";
-    again.style.display = "none";
-    document.getElementById('home').style.display = "none";
-    if(books.indexOf(phrase) > -1){
-        books.splice(r,1);
-        bookTitles();
-    }
-    else if(movieSayings.indexOf(phrase) > -1){
-        movieSayings.splice(r,1);
-        movies();
-    }
-    else if(songs.indexOf(phrase) > -1){
-        songs.splice(r,1);
-        hitSong();
-    }
-    else if(document.getElementById('charcount').innerHTML > 0){
-        document.getElementById('gamePage').style.display = "none";
-        document.getElementById('input').value = "";
-        document.getElementById('charcount').innerHTML = "0";
-    }
-    else{
-        famousQuote();
     }
 }

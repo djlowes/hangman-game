@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway:200,700|Source+Sans+Pro:300,600,300italic,600italic");
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+@import url('https://fonts.googleapis.com/css?family=The+Girl+Next+Door');
 
 /*
 	Solid State by HTML5 UP
@@ -1779,9 +1781,11 @@ strong, b {
     	}
 
   h4 {
-    font-size: 3.1em;
-    font-weight: 600;
-    color: #DCDCDC;
+		font-size: 1.9em;
+		color: #ffffff;
+		font-family: Raleway, Helvetica, sans-serif;
+		font-weight: 600;
+		text-transform: uppercase;
 
     	}
 
@@ -2051,10 +2055,12 @@ body, html, #category, #category1, #category2, #bookTitles, #movies, #songs, #fa
         border: 1px solid white;
         border-radius: 15px;
         padding: 0.5em;
-        font-weight: 600;
+        font-weight: 200;
         text-transform: uppercase;
-        color: #FFFFFF
+				font-family: 'Indie Flower', cursive;
+				color: #FFFFFF
     }
+
     #famousQuote, #movies{
         float: right;
     }
@@ -2070,6 +2076,19 @@ body, html, #category, #category1, #category2, #bookTitles, #movies, #songs, #fa
     #famousQuote{
       background: url("images/quotes.jpeg")
     }
+		#famousQuote:hover{
+			opacity: 0.5;
+		}
+		#bookTitles:hover {
+				opacity: 0.5;
+		}
+		#movies:hover{
+			opacity: 0.5;
+		}
+		#songs:hover{
+			opacity: 0.5;
+		}
+
 
 #playPage{
     display: none;
@@ -2090,7 +2109,7 @@ body, html, #category, #category1, #category2, #bookTitles, #movies, #songs, #fa
         padding: 10px;
     }
     #letter1, #letter2, #letter3, #letter4, #letter5, #letter6, #letter7, #letter8, #letter9, #letter10, #letter11, #letter12, #letter13, #letter14, #letter15, #letter16, #letter17, #letter18, #letter19, #letter20, #letter21, #letter22, #letter23, #letter24, #letter25, #letter26, #letter27, #letter28, #letter29, #letter30, #letter31, #letter32, #letter33, #letter34, #letter35, #letter36, #letter37, #letter38, #letter39, #letter40, #letter41, #letter42, #letter43, #letter44, #letter45, #letter46, #letter47, #letter48, #letter49, #letter50, #letter51, #letter52, #letter53, #letter54, #letter55, #letter56, #letter57, #letter58, #letter59, #letter60, #letter61, #letter62, #letter63, #letter64, #letter65, #letter66, #letter67, #letter68, #letter69, #letter70, #letter71, #letter72, #letter73, #letter74, #letter75, #letter76, #letter77, #letter78, #letter79, #letter80, #letter81, #letter82, #letter83, #letter84, #letter85, #letter86, #letter87, #letter88, #letter89, #letter90, #letter91, #letter92, #letter93, #letter94, #letter95, #letter96, #letter97, #letter98, #letter99, #letter100{
-        font-family: 'Gloria Hallelujah', cursive;
+        font-family: 'The Girl Next Door', cursive;
         width: 50px;
         height: 60px;
         margin-bottom: 40px;
@@ -2168,8 +2187,9 @@ body, html, #category, #category1, #category2, #bookTitles, #movies, #songs, #fa
 
   	}
 
-
-
+	#a, #b, #c, #d, #e, #f, #g, #h, #i, #j, #k, #l, #m, #n, #o, #p, #q, #r, #s, #t, #u, #v, #w, #x, #y, #z {
+		visibility: hidden;
+	}
 
 
 
