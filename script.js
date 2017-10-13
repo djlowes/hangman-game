@@ -7,6 +7,8 @@ var movieSayings = ["Frankly, my dear, I don't give a damn", "Here's looking at 
 var songs = ["Smells Like Teen Spirit", "Imagine", "One", "Billie Jean" ,"Bohemian Rhapsody", "Hey Jude", "Like A Rolling Stone", "I Cant Get No Satisfaction", "God Save The Queen", "London Calling", "Hotel California", "Stairway To Heaven", "The Twist", "Live Forever", "Life On Mars?", "Heartbreak Hotel", "Over The Rainbow", "Born To Run", "Creep", "Respect", "Dancing Queen", "Good Vibrations", "Purple Haze", "Yesterday", "No Woman No Cry", "Hallelujah", "Stand By Me", "When Doves Cry", "River Deep Mountain High"];
 var quotes = ["That which does not kill us makes us stronger.", "In the middle of every difficulty lies opportunity.", "You must be the change you wish to see in the world.", "If you want something done right, do it yourself.", "The unexamined life is not worth living.", "Better to have loved and lost, than to have never loved at all.", "An eye for an eye leaves the whole world blind.", "Necessity is the mother of invention.", "Give a man a fish and you feed him for a day, teach a man to fish and you feed him for a lifetime.", "With great power comes great responsibility.", "The pen is mightier than the sword.", "It is always darkest just before the dawn.", "If you are going through hell, keep going.", "A penny saved is a penny earned.", "Ignorance is bliss.", "Fortune favours the bold.", "I think therefore I am.", "Hell has no fury like a woman scorned.", "When the going gets tough, the tough get going.", "Nothing is certain except for death and taxes."];
 
+
+
 // Displays play page
 
 function startG(){
@@ -14,9 +16,12 @@ function startG(){
     document.getElementById('categoryPage').style.display = "block";
 }
 
+
+
 // Randomly selects phrase from array in each category on play page
 
 function bookTitles(){
+    alert("Please use your keyboard to play")
     r = Math.floor(Math.random()*books.length);
     phrase = books[r];
       console.log(phrase);
@@ -25,6 +30,7 @@ function bookTitles(){
     hangman();
 }
 function movies(){
+    alert("Please use your keyboard to play")
     r = Math.floor(Math.random()*movieSayings.length);
     phrase = movieSayings[r];
       console.log(phrase);
@@ -33,6 +39,7 @@ function movies(){
     hangman();
 }
 function hitSong(){
+    alert("Please use your keyboard to play")
     r = Math.floor(Math.random()*songs.length);
     phrase = songs[r];
       console.log(phrase);
@@ -41,6 +48,7 @@ function hitSong(){
     hangman();
 }
 function famousQuote(){
+  alert("Please use your keyboard to play")
   r = Math.floor(Math.random()*quotes.length);
   phrase = quotes[r];
     console.log(phrase);
@@ -48,6 +56,8 @@ function famousQuote(){
   document.getElementById('categoryName').innerHTML = "What is this famous quote?";
   hangman();
 }
+
+
 
 // Draws the lines of the hidden phrase to start guessing - initiates the game
 
@@ -86,6 +96,8 @@ function hangman(){
     fillLength = phrase.length - spaces;
     document.getElementById('playPage').style.display = "block";
 }
+
+
 
 // Displays hangman canvass as starting point (stole from a github user)
 
@@ -151,8 +163,9 @@ function draw(){
 
 // Guessing
 
-//Issue 1. When you enter the same key twice it counts as numRight & numWrong so it exits the game early (before win/loss)
-//Issue 2. Stops keypress when win/ lost when finished
+//Issue 1. When you enter the same key twice (correct guess) it counts as numRight so it will fires win() on events where not all letters have been guessed
+//Issue 2. When you enter the same key twice (incorrect guess) it counts as numWrong and hang() will continue to fire
+//Issue 3. guessLetter still works after win() - it should stop
 
 var numWrong = 0;
 var numRight = 0;
@@ -163,6 +176,9 @@ document.onkeyup = function guessLetter() {
   var ul1 = document.getElementById('underline1').offsetWidth;
   var correct = 0;
   var userGuess = event.key;
+  if (letterDisplay.indexOf(event.key) === -1) {
+    return;
+  }
   for (let a = 1; a < 101; a++) {
     for(let g = 0; g < letterDisplay.length; g++) {
       var top = document.getElementById('letter'+a);
@@ -173,44 +189,27 @@ document.onkeyup = function guessLetter() {
       numRight++;
     } else if (userGuess === letterDisplay[g] && userGuess != top.innerHTML.toLowerCase()) {
         document.getElementById(letterDisplay[g]).style.visibility = 'visible';
-      }
     }
   }
-
-  if(correct==0) {
+}
+if(correct==0) {
     numWrong++;
     hang();
   }
 
-  if(numWrong==6) {
+console.log('incorrect guess: ' + numWrong)
+document.getElementById('guessesIncorrect').innerHTML = numWrong;
+
+
+if(numWrong==6) {
     results.style.visibility = "visible";
-    results.style.color = "red";
-    results.innerHTML = "You can't miss another letter!";
-      if(ul1 == 50) {
-        results.style.lineHeight = "70px";
-        results.style.fontSize = "30px";
-      }
-      if(ul1 == 28) {
-        results.style.lineHeight = "50px";
-        results.style.fontSize = "25px";
-      }
-      if(ul1 == 18) {
-        results.style.lineHeight = "40px";
-        results.style.fontSize = "20px";
-      }
+    results.style.color = "white";
+    results.innerHTML = "<b>You can't miss another letter!</b>";
+    results.style.fontSize = "24px";
     }
     if(numWrong==7){
-      results.innerHTML = "You lose!<br>Keep guessing until you get it right.";
+      results.innerHTML = '<b>You lose!</b><br />If you want, you can keep guessing until you get it right.';
       document.getElementById('home').style.display = "block";
-        if(ul1 == 50){
-          results.style.lineHeight = "40px";
-        }
-        if(ul1 == 28){
-          results.style.lineHeight = "25px";
-        }
-        if(ul1 == 18){
-          results.style.lineHeight = "20px";
-        }
     }
     if(numRight==fillLength){
       win();
@@ -225,45 +224,24 @@ function win(){
     var ul1 = document.getElementById('underline1').offsetWidth;
     var results = document.getElementById('results');
         results.style.visibility = "visible";
-        results.style.color = "#00b100";
+        results.style.color = "#228B22";
+        results.style.fontSize = "40px";
     if(numWrong > 6){
         results.innerHTML = "It's about time you figured it out...";
         document.getElementById('letterBank').style.display = "none";
         document.getElementById('home').style.display = "block";
-        if(ul1 == 50){
-            results.style.lineHeight = "70px";
-            results.style.fontSize = "30px";
         }
-        if(ul1 == 28){
-            results.style.lineHeight = "50px";
-            results.style.fontSize = "25px";
-        }
-        if(ul1 == 18){
-            results.style.lineHeight = "40px";
-            results.style.fontSize = "20px";
-        }
-    }
     else{
         results.innerHTML = "You win!";
         document.getElementById('letterBank').style.display = "none";
         document.getElementById('home').style.display = "block";
-        if(ul1 == 50){
-            results.style.marginTop = "75px";
-            results.style.fontSize = "200px";
-        }
-        if(ul1 == 28){
-            results.style.marginTop = "40px";
-            results.style.fontSize = "100px";
-        }
-        if(ul1 == 18){
-            results.style.marginTop = "15px";
-            results.style.fontSize = "75px";
-        }
+        results.style.fontSize = "40px";
     }
 }
 
-// Draws hangman when guesses are wrong (stole from a github account)
 
+
+// Draws hangman when guesses are wrong (stole from a github account)
 
 function hang(){
     var ctx = document.getElementById("hangman").getContext('2d');

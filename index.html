@@ -351,8 +351,9 @@
             </div>
         </div>
         <canvas id="hangman" width="300px" height="300px"></canvas>
-				<div>Click the letters on your keyboard to guess!</div>
-				<div>Your guesses so far</div>
+				<br />
+				<div class ="guesses">Your incorrect guesses so far:  <span id="guessesIncorrect"></span></div>
+				<div id="results"></div>
 				  <div id="letterBank">
                 <div id="a">A</div>
 								<div id="b">B</div>
@@ -381,7 +382,6 @@
 								<div id="y">Y</div>
 								<div id="z">Z</div>
         </div>
-				<div id="results"></div>
         <div id="home" onClick="window.location.reload()">Play Again</div>
 
     </div>
